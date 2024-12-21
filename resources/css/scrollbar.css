@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+}
+html.dark ::-webkit-scrollbar-track {
+    background: none !important;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background: none !important;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+    background: none !important;
+}

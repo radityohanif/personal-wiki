@@ -25,10 +25,11 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
+            ->darkMode(true, true)
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Green,
+                'primary' => Color::hex('#E95420'),
             ])
             ->registration()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

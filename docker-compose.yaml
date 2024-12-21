@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql
+    container_name: personal_wiki_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+    volumes:
+      - personal_wiki_mysql_storage:/var/lib/mysql
+    networks:
+      - personalwiki-network
+
+  web:
+    container_name: personal_wiki_web
+    image: personalwiki/web
+    build: 
+      context: ./
+    networks:
+      - personalwiki-network
+    depends_on:
+      - mysql
+    environment:
+      - .env
+    ports:
+      - "9001:8000"
+    volumes:
+      - ./:/var/www
+      - personal_wiki_web_storage:/app/storage
+
+volumes:
+  personal_wiki_mysql_storage: {}
+  personal_wiki_web_storage: {}
+
+networks:
+  personalwiki-network:
+    driver: bridge
