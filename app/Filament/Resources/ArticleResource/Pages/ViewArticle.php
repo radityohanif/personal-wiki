@@ -29,7 +29,9 @@ class ViewArticle extends ViewRecord
     public function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\RichEditor::make('content')->columnSpan(3)->hiddenLabel(),
+            Forms\Components\Section::make('')->columnSpan(3)->schema([
+                Forms\Components\RichEditor::make('content')->columnSpanFull()->hiddenLabel(),
+            ]),
             Forms\Components\Section::make()->schema([
                 Forms\Components\Placeholder::make('created_at')
                     ->label('Terakhir diubah')
